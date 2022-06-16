@@ -1,0 +1,76 @@
+/* The sidepanel menu */
+.sidepanel {
+    height: 250px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1031; /* Stay on top */
+    top: 8rem;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+    position: absolute;
+    top: 33%;
+    line-height: 1;
+    right: -30px;
+/*    transform:rotate(270deg);*/
+    transform:rotate(90deg);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border: #4e555b;
+    background: #4e555b;
+    display: block;
+    z-index: 1000000001;
+/*    width: 5;*/
+    /*left: 0;*/
+}
+
+/*
+.openbtn {
+    position: fixed;
+    top: 8em;
+    left: 0;
+    margin-left: 0px;
+    padding-left: 0px;
+    transform:rotate(90deg);
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}*/

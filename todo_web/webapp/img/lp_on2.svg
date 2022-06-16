@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:white;}
+	.st1{fill:white;stroke:white;stroke-width:57;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<g>
+		<g>
+			<path class="st0" d="M553.8,0H58.2C26.1,0,0,26.1,0,58.2v495.6C0,585.9,26.1,612,58.2,612h495.6c32.1,0,58.2-26.1,58.2-58.2V58.2
+				C612,26.1,585.9,0,553.8,0z M573.6,553.8c0,10.9-8.9,19.8-19.8,19.8H58.2c-10.9,0-19.8-8.9-19.8-19.8V58.2
+				c0-10.9,8.9-19.8,19.8-19.8h495.6c10.9,0,19.8,8.9,19.8,19.8L573.6,553.8L573.6,553.8z"/>
+		</g>
+	</g>
+</g>
+<line class="st1" x1="85" y1="85" x2="525.5" y2="525.5"/>
+<line class="st1" x1="526.2" y1="85" x2="85.7" y2="525.5"/>
+</svg>
