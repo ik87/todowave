@@ -208,6 +208,23 @@ li div[name='text'] {
     font-size: 1.4em;
 }
 
+li[done="false"] div[name="text"] a:hover {
+    color: rgb(200, 104, 253);
+    text-shadow: 0 0 5px rgb(178, 129, 255);
+}
+
+li[done="false"] div[name="text"] a {
+    color: rgb(242, 218, 255);
+    text-shadow: 0 0 5px rgb(178, 129, 255);
+}
+
+li[done="true"] div[name="text"] a {
+    color: rgb(242, 218, 255);
+    text-shadow: 0 0 5px rgb(178, 129, 255);
+}
+
+
+
 li[done="true"] div[name="text"] {
     text-decoration: line-through;
     color: rgba(255, 255, 255, 0.5);
@@ -218,7 +235,10 @@ li[done="false"] div[name="text"] {
     text-shadow: 0 0 5px #C8C8C8;
 }
 
-
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
 
 footer {
     position:fixed;
@@ -228,15 +248,6 @@ footer {
 
 }
 
-a {
-    border-bottom: 1px solid #ffffff;
-}
-
-footer a:hover {
-    text-decoration-line: none;
-    color: #FFFFFF;
-    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
-}
 
 
 
