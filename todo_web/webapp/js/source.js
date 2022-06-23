@@ -143,10 +143,16 @@ function newtask() {
 }
 
 //when scroll
-var last_scroll_top = 0;
+let last_scroll_top = 0;
 $(window).scroll(function (event) {
-    var st = $(this).scrollTop();
-    if (st > last_scroll_top) {
+
+    let st = $(this).scrollTop();
+
+
+    console.log("st: " + last_scroll_top);
+    console.log("scrolTop: " + st);
+
+    if (st > last_scroll_top || st == 0) {
         // downscroll code
         show_nav();
     } else {
