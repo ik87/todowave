@@ -74,7 +74,7 @@ async function update_sign_in_status(isSignedIn) {
         $("#signin").hide()
         $("#signout").show()
         $("#signinModal").modal('hide');
-        get_my_info();
+       // get_my_info();
         await load_data(TASK);
         await load_data(CONFIG)
         console.log("loaded file data")
