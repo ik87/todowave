@@ -31,7 +31,7 @@ $('#todo').on("click", 'div[name="text"]', function (data) {
     }
 
     $(this).prop('contenteditable', false);
-
+    $(this).html(linkify($(this).text()))
     document.dispatchEvent(SAVE_CURRENT_TODO_EVENT)
 });
 
@@ -179,7 +179,7 @@ function task(data) {
     let li = `<li class="media mt-3" done="${data.done}">
                     <div name="status"></div>
                     <div class="media-body">
-                        <div name="text">${data.desc}</div>
+                        <div name="text">${linkify(data.desc)}</div>
                         <div>
                             <hr class="my-1 border-white">
                             <div class="row justify-content-end">
@@ -265,5 +265,23 @@ function poll() {
 
         }, dataType: "json", complete: poll, timeout: 30000
     });
+}
+
+function linkify(inputText) {
+    let replacedText, replacePattern1, replacePattern2, replacePattern3;
+
+    //URLs starting with http://, https://, or ftp://
+    replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+    //Change email addresses to mailto:: links.
+    replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+
+    return replacedText;
 }
 
