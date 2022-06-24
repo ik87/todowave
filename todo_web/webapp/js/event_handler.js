@@ -19,9 +19,9 @@ document.addEventListener("save-current-todo-to-history-event",
             date : format_date(max),
             todo: TASK.data
         }
-        console.log(data)
+       if(DEBUG)console.log(data)
         let filename = `history_${max.valueOf()}.json`
-        console.log("filename: " + filename)
+       if(DEBUG)console.log("filename: " + filename)
         await create_file(data, filename)
     })
 
@@ -29,10 +29,10 @@ document.addEventListener("show-history-event",
     async function (e) {
     //return list history
     let history_meta_list = JSON.parse((await get_file_by_contains_name('history', 'id, name')).body)
-    console.log("history files:")
-    console.log(history_meta_list)
+        if(DEBUG)console.log("history files:")
+        if(DEBUG)console.log(history_meta_list)
     let history_todo_list = await Promise.all( history_meta_list.files.map( obj => get_file_by_id( obj.id)))
-    console.log(history_todo_list)
+        if(DEBUG)console.log(history_todo_list)
     //clear history
     clear_history_todolist()
     //fill history

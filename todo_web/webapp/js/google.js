@@ -63,7 +63,7 @@ function list_files() {
             'pageSize': 100,
             'fields': "nextPageToken, files(*)"
         }).then(function(response) {
-            console.log(response)
+            if(DEBUG)console.log(response)
     })})
 }
 
@@ -77,10 +77,10 @@ async function update_sign_in_status(isSignedIn) {
        // get_my_info();
         await load_data(TASK);
         await load_data(CONFIG)
-        console.log("loaded file data")
-        console.log(TASK)
-        console.log("load config data")
-        console.log(CONFIG)
+        if(DEBUG)console.log("loaded file data")
+        if(DEBUG)console.log(TASK)
+        if(DEBUG)console.log("load config data")
+        if(DEBUG)console.log(CONFIG)
         list_files();
         make_todolist(TASK.data)
         set_config(CONFIG.data)
@@ -95,13 +95,13 @@ async function update_sign_in_status(isSignedIn) {
 }
 
 async function load_data(payload) {
-    console.log("exist file: ")
+    if(DEBUG)console.log("exist file: ")
     let resp = await get_file_by_name(payload.filename, "id")
-    console.log(resp.result.files)
+    if(DEBUG)console.log(resp.result.files)
     if (resp.result.files.length === 0) {
         payload.id = (await create_file(payload.data, payload.filename)).id
-        console.log("save file: ")
-        console.log(payload)
+        if(DEBUG)console.log("save file: ")
+        if(DEBUG)console.log(payload)
     } else {
         payload.id = resp.result.files[0].id
         payload.data = await get_file_by_id(payload.id)
@@ -186,9 +186,9 @@ async function create_file(data, filename) {
 }
 
 function update_file(payload) {
-    console.log("update_file")
-    console.log(payload)
-    console.log(payload.id)
+    if(DEBUG)console.log("update_file")
+    if(DEBUG)console.log(payload)
+    if(DEBUG)console.log(payload.id)
     let accessToken = gapi.auth.getToken().access_token;
     const url = 'https://www.googleapis.com/upload/drive/v3/files/'+payload.id+'?uploadType=media';
     fetch(url, {
@@ -201,7 +201,7 @@ function update_file(payload) {
     })
         .then(result => result.json())
         .then(value => {
-            console.log('Updated. Result:\n' + JSON.stringify(value, null, 2));
+            if(DEBUG)console.log('Updated. Result:\n' + JSON.stringify(value, null, 2));
         })
         .catch(err => console.error(err))
 }

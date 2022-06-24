@@ -46,7 +46,7 @@ function clear_history_todolist() {
 
 function unselect() {
     let input = $('#histroy_todo table tr input:checked');
-    //console.log(input)
+    if(DEBUG)console.log(input)
     for(i = 0 ; i < input.length; i++) {
         input[i].checked = false;
     }
