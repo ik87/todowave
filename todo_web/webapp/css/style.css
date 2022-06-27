@@ -205,7 +205,7 @@ li[done="true"] div[name="status"] {
 }
 
 li div[name='text'] {
-    font-size: 1.4em;
+    font-size: 1.05em;
 }
 
 li[done="false"] div[name="text"] a:hover {

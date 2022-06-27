@@ -9,11 +9,7 @@ let show_completed = true;
 //when write text
 $('#todo').on("click", 'div[name="text"]', function (data) {
     $(this).prop('contenteditable', true).focus();
-    hide_nav();
-    hide_top_nav();
 }).on('keydown', 'div[name="text"]', function (e) {
-    hide_nav();
-    hide_top_nav();
     if (e.which == 13 && !e.shiftKey) {
         if ($(this).html().length == 0) {
             $(this).html("\xa0");
@@ -31,8 +27,6 @@ $('#todo').on("click", 'div[name="text"]', function (data) {
 
 
 }).on('focusout', 'div[name="text"]', function (data) {
-    show_top_nav();
-    show_nav();
     if ($(this).html().length == 0) {
         $(this).html("\xa0");
     }
@@ -82,7 +76,6 @@ $('#todo').on('click', 'div[name="trash"]', function () {
         $('#count_open').html(--count_open);
     }
     li.remove();
-    show_nav();
     document.dispatchEvent(SAVE_CURRENT_TODO_EVENT)
 });
 
@@ -132,14 +125,12 @@ $("#newtodo").on('click', async function () {
 //when click "sign in"
 $("#signin").on('click', function () {
     $("#signinModal").modal('show');
-    show_nav();
 });
 
 //when click "history"
 $("#histroy").on('click', function () {
     document.dispatchEvent(SHOW_HISTORY_EVENT)
     $("#histroyModal").modal('show');
-    show_nav();
 });
 
 function newtask() {
@@ -149,25 +140,21 @@ function newtask() {
     return task(data);
 }
 
-//when scroll
-let last_scroll_top = 0;
+
 $(window).scroll(function (event) {
 
-    let st = $(this).scrollTop();
+    if(DEBUG)console.log(" height: "+ $( window ).height());
+    if(DEBUG)console.log(" wight: "+ $( window ).width());
+    if(DEBUG)console.log(" ratio: "+  $( window ).height()/$( window ).width());
 
-
-    if(DEBUG)console.log("st: " + last_scroll_top);
-    if(DEBUG)console.log("scrolTop: " + st);
-
-    if (st > last_scroll_top || st == 0) {
-        // downscroll code
-        show_nav();
-        show_top_nav();
-    } else {
+    if(isMobileVersion() && $( window ).height()/$( window ).width() < 1.7) {
+        hide_top_nav();
         hide_nav();
-        // upscroll code
+    } else {
+        show_top_nav();
+        show_nav();
     }
-    last_scroll_top = st;
+
 });
 
 
@@ -182,15 +169,12 @@ function hide_nav() {
 }
 
 function hide_top_nav() {
-    if(isMobileVersion()) {
-        $('#top_nav').css({'visibility': "hidden", 'margin-top': '-100px'});
-        $('#top_bar').css({'visibility': "hidden"});
-    }
-
+    $('#top_nav').css({'visibility': "hidden"});
+    $('#top_bar').css({'visibility': "hidden"});
 }
 
 function show_top_nav() {
-    $('#top_nav').css({'visibility': '', 'margin-top': ''});
+    $('#top_nav').css({'visibility': ''});
     $('#top_bar').css({'visibility': ''});
 }
 
