@@ -1,5 +1,6 @@
 let count_done = 0;
 let count_open = 0;
+let height_def = $(window).height;
 const DEBUG = false;
 const SAVE_CURRENT_TODO_EVENT = new CustomEvent("save-current-todo-event")
 const SAVE_CURRENT_TODO_TO_HISTORY_EVENT = new CustomEvent("save-current-todo-to-history-event")
@@ -140,30 +141,58 @@ function newtask() {
     return task(data);
 }
 
-
+//when scroll
+let last_scroll_top = 0;
 $(window).scroll(function (event) {
 
+        let st = $(this).scrollTop();
+        if (DEBUG) console.log("st: " + last_scroll_top);
+        if (DEBUG) console.log("scrolTop: " + st);
+
+        if ((st + $(window).height() > $(document).height() - 100) || st > last_scroll_top || st == 0) {
+            // downscroll code
+            show_scroll_nav();
+        } else  {
+            hide_scroll_nav();
+            // upscroll code
+        }
+        last_scroll_top = st;
+});
+
+$(window).resize(function (event) {
     if(DEBUG)console.log(" height: "+ $( window ).height());
     if(DEBUG)console.log(" wight: "+ $( window ).width());
     if(DEBUG)console.log(" ratio: "+  $( window ).height()/$( window ).width());
-
-    if(isMobileVersion() && $( window ).height()/$( window ).width() < 1.7) {
-        hide_top_nav();
-        hide_nav();
-    } else {
-        show_top_nav();
-        show_nav();
+    if(isMobileVersion()) {
+       if ($(window).height() / $(window).width() < 1.5) {
+           hide_top_nav();
+           hide_nav();
+       } else  {
+           show_top_nav();
+           show_nav();
+           show_scroll_nav();
+       }
     }
-
 });
 
 
 function show_nav() {
+    $('#bottom_nav').css({'visibility': ""});
+    $('#newtask').css({'visibility': ""});
+}
+
+function hide_nav() {
+    $('#newtask').css({'visibility': "hidden"});
+    $('#bottom_nav').css({'visibility': "hidden"});
+
+}
+
+function show_scroll_nav() {
     $('#bottom_nav').css({bottom: "0px"});
     $('#newtask').css({bottom: "-25px"});
 }
 
-function hide_nav() {
+function hide_scroll_nav() {
     $('#newtask').css({bottom: "-100px"});
     $('#bottom_nav').css({bottom: "-100px"});
 }
