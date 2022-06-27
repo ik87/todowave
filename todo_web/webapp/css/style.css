@@ -131,17 +131,17 @@ div[name="text"] {
     cursor: text;
 }
 
-#newtodo, #signin, #histroy, #show_completed{
+#newtodo, #signout, #histroy, #show_completed{
     cursor: pointer;
 }
 
-#newtodo:hover {
+#newtodo:hover  {
     text-decoration-line: none;
     color: #FFFFFF;
     text-shadow: 0 -1px 2px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
 }
 
-#signin:hover {
+#signout:hover {
     text-decoration-line: none;
     color: #FFFFFF;
     text-shadow: 0 -1px 2px #FFF, 0 -2px 10px #00ff1b, 0 -10px 20px #77ff83, 0 -18px 40px #daffdb;
@@ -293,7 +293,7 @@ select.form-control {
 .navbar-text h2 {
     font-size: 2.0rem
 }
-.navbar-text h2 span:first-child {
+#label {
     font-family:'Conv_Lazer84'
 }
 
