@@ -1,7 +1,11 @@
 #histroy_todo tbody th {
     width: 1%;
-
 }
+
+#histroy_todo tr td:nth-child(2) {
+    word-break: break-all;
+}
+
 #histroy_todo tr[done="false"] th div  {
     width: 1.4em; height: 1.4em;
     background-image: url(../img/circle.svg);
